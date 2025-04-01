@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://be0vps1mxpfnf"]
+
+[ext_resource type="SpriteFrames" uid="uid://dc1fdxwgxwx1v" path="res://sprites/pixelmatch-logo.tres" id="1_ncxyx"]
+[ext_resource type="Script" uid="uid://b8q0nar4eclfk" path="res://animated_sprite_2d.gd" id="2_pevhg"]
+
+[node name="start_screen" type="Control"]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="ColorRect"]
+z_index = 50
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.831
+anchor_top = 1.0
+anchor_right = 0.95
+anchor_bottom = 1.0
+offset_left = 26.688
+offset_top = -76.0
+offset_right = -0.400024
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+z_index = 10
+position = Vector2(581, 313)
+sprite_frames = ExtResource("1_ncxyx")
+frame_progress = 0.636236
+script = ExtResource("2_pevhg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dc1fdxwgxwx1v"]
+
+[ext_resource type="Texture2D" uid="uid://cxmumwtyvi4rs" path="res://sprites/Pixelmatch-logo.png" id="1_3oi8t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oi8t"]
+atlas = ExtResource("1_3oi8t")
+region = Rect2(0, 12, 512, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bxwt"]
+atlas = ExtResource("1_3oi8t")
+region = Rect2(512, 12, 512, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1aog"]
+atlas = ExtResource("1_3oi8t")
+region = Rect2(1024, 12, 512, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq8ho"]
+atlas = ExtResource("1_3oi8t")
+region = Rect2(1536, 12, 512, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eayw"]
+atlas = ExtResource("1_3oi8t")
+region = Rect2(2048, 12, 512, 500)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oi8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bxwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1aog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq8ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eayw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
