@@ -18,6 +18,11 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+SaveManager="*res://scripts/save_manager.gd"
+
 [display]
 
 window/stretch/mode="viewport"
