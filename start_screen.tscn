@@ -1,15 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://be0vps1mxpfnf"]
+[gd_scene load_steps=7 format=3 uid="uid://be0vps1mxpfnf"]
 
+[ext_resource type="Script" uid="uid://bary2m16fuli0" path="res://start_screen.gd" id="1_afy8x"]
 [ext_resource type="SpriteFrames" uid="uid://dc1fdxwgxwx1v" path="res://sprites/pixelmatch-logo.tres" id="1_ncxyx"]
 [ext_resource type="Script" uid="uid://b8q0nar4eclfk" path="res://animated_sprite_2d.gd" id="2_pevhg"]
+
+[sub_resource type="Animation" id="Animation_k1na2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeInLayer:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_afy8x"]
+resource_name = "fade_in_out"
+length = 2.0
+markers = [{
+"color": Color(0, 0, 0, 1),
+"name": &"new_marker",
+"time": 0.0
+}, {
+"color": Color(0.0627451, 1, 1, 1),
+"name": &"new_marker_2",
+"time": 1.2
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeInLayer:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1na2"]
+_data = {
+&"RESET": SubResource("Animation_k1na2"),
+&"fade_in_out": SubResource("Animation_afy8x")
+}
 
 [node name="start_screen" type="Control"]
 custom_minimum_size = Vector2(960, 540)
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_afy8x")
+
+[node name="FadeInLayer" type="ColorRect" parent="."]
+z_index = 99
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k1na2")
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
@@ -21,7 +83,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Button" type="Button" parent="ColorRect"]
+[node name="StartButton" type="Button" parent="ColorRect"]
 z_index = 50
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 1
@@ -45,7 +107,4 @@ sprite_frames = ExtResource("1_ncxyx")
 frame_progress = 0.636236
 script = ExtResource("2_pevhg")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[connection signal="pressed" from="ColorRect/StartButton" to="." method="_on_start_button_pressed"]
