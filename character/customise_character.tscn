@@ -1,4 +1,31 @@
-[gd_scene format=3 uid="uid://du23gm7m61aa3"]
+[gd_scene load_steps=12 format=3 uid="uid://du23gm7m61aa3"]
+
+[ext_resource type="Script" uid="uid://cglfofm1pgmjr" path="res://character/customise_character.gd" id="1_aa2cn"]
+[ext_resource type="PackedScene" uid="uid://ccg3ikykt1sns" path="res://player.tscn" id="1_y1y4p"]
+[ext_resource type="Texture2D" uid="uid://blqwogxhkckii" path="res://character/girl_face_tab.png" id="3_ch3sq"]
+[ext_resource type="Texture2D" uid="uid://eo3pfgj4m1ve" path="res://character/girl_hair_tab.png" id="4_geynt"]
+[ext_resource type="Texture2D" uid="uid://cyejpigyajtqy" path="res://character/tops_tab.png" id="5_nswma"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6koge"]
+bg_color = Color(0.662745, 0.494118, 0.796078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa2cn"]
+bg_color = Color(0.733318, 0.572726, 0.827518, 1)
+border_color = Color(0.8, 0.682353, 0.8, 1)
+corner_detail = 20
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nswma"]
+bg_color = Color(0.663449, 0.49267, 0.796544, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch3sq"]
+bg_color = Color(0.733333, 0.572549, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fabpe"]
+bg_color = Color(0.662745, 0.494118, 0.796078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_geynt"]
+bg_color = Color(0.733333, 0.572549, 0.827451, 1)
 
 [node name="customise_character_screen" type="Control"]
 custom_minimum_size = Vector2(960, 540)
@@ -8,8 +35,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aa2cn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
 layout_mode = 1
 anchors_preset = 15
@@ -17,10 +45,120 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.291395, 0.666406, 0.765101, 1)
+color = Color(0.341176, 0.741176, 0.870588, 1)
+
+[node name="player" parent="background" instance=ExtResource("1_y1y4p")]
+position = Vector2(224, 144)
+scale = Vector2(0.5, 0.5)
+
+[node name="BacktoSeasonsButton" type="Button" parent="background"]
+z_index = 50
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.853
+anchor_right = 0.13
+anchor_bottom = 0.931
+offset_left = -17.752
+offset_top = -527.744
+offset_right = -18.344
+offset_bottom = -528.288
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_6koge")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aa2cn")
+text = "Back
+"
+
+[node name="button_backing" type="ColorRect" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.036
+anchor_right = 0.109
+anchor_bottom = 0.114
+offset_left = 9.832
+offset_top = 12.672
+offset_right = 13.432
+offset_bottom = 10.128
+mouse_filter = 2
+color = Color(1, 0.847059, 0.85098, 1)
+
+[node name="AvatarLeftButton" type="Button" parent="background"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 271.0
+offset_top = 499.0
+offset_right = 321.0
+offset_bottom = 536.0
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_nswma")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ch3sq")
+text = "<"
+
+[node name="AvatarRightButton" type="Button" parent="background"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 333.0
+offset_top = 499.0
+offset_right = 383.0
+offset_bottom = 536.0
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_fabpe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_geynt")
+text = ">"
+
+[node name="book" type="ColorRect" parent="background"]
+custom_minimum_size = Vector2(400, 460)
+layout_mode = 0
+offset_left = 527.0
+offset_top = 118.0
+offset_right = 927.0
+offset_bottom = 578.0
+color = Color(0.831373, 0.501961, 0.733333, 1)
+
+[node name="face_page" type="ColorRect" parent="background"]
+custom_minimum_size = Vector2(370, 445)
+layout_mode = 0
+offset_left = 540.0
+offset_top = 126.0
+offset_right = 915.0
+offset_bottom = 571.0
+color = Color(0.941176, 0.72549, 0.87451, 1)
+
+[node name="FacePageButton" type="TextureButton" parent="background/face_page"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 19.0
+offset_right = 6.0
+offset_bottom = 59.0
+scale = Vector2(0.4, 0.4)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_ch3sq")
+
+[node name="HairPageButton" type="TextureButton" parent="background/face_page"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 104.0
+offset_right = 70.0
+offset_bottom = 322.0
+scale = Vector2(0.4, 0.4)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_geynt")
+
+[node name="TopsPageButton" type="TextureButton" parent="background/face_page"]
+layout_mode = 0
+offset_left = -34.0001
+offset_top = 191.0
+offset_right = 71.9999
+offset_bottom = 409.0
+scale = Vector2(0.39, 0.39)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nswma")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -32,3 +170,11 @@ offset_bottom = 70.0
 grow_horizontal = 2
 text = "Customize character"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="background/BacktoSeasonsButton" to="." method="_on_back_seasons_button_pressed"]
+[connection signal="pressed" from="background/BacktoSeasonsButton" to="." method="_on_back_season_button_pressed"]
+[connection signal="pressed" from="background/AvatarLeftButton" to="." method="_on_avatar_left_button_pressed"]
+[connection signal="pressed" from="background/AvatarRightButton" to="." method="_on_avatar_right_button_pressed"]
+[connection signal="pressed" from="background/face_page/FacePageButton" to="." method="_on_face_page_button_pressed"]
+[connection signal="pressed" from="background/face_page/HairPageButton" to="." method="_on_hair_page_button_pressed"]
+[connection signal="pressed" from="background/face_page/TopsPageButton" to="." method="_on_tops_page_button_pressed"]

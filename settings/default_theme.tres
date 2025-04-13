@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cnfw178sa2uao"]
+
+[ext_resource type="FontFile" uid="uid://m6r4wbwsodi4" path="res://fonts/m5x7.ttf" id="1_n4ngu"]
+
+[resource]
+default_font = ExtResource("1_n4ngu")
+default_font_size = 35

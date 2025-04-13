@@ -55,7 +55,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_k81u3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
