@@ -14,5 +14,3 @@ void fragment() {
 	float hue = UV.x; // horizontal gradient
     COLOR = vec4(hsv2rgb(vec3(hue, 1.0, 1.0)), 1.0);
 }
-
-

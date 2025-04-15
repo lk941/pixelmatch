@@ -1,10 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://eon33egacxr5"]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://eon33egacxr5"]
 
 [ext_resource type="Texture2D" uid="uid://bq5q3rw7isgec" path="res://sprites/basic_girl_spritesheet1.png" id="1_uk250"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gdm0"]
-atlas = ExtResource("1_uk250")
-region = Rect2(480, 0, 160, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udexr"]
 atlas = ExtResource("1_uk250")
@@ -19,14 +15,6 @@ atlas = ExtResource("1_uk250")
 region = Rect2(480, 0, 160, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0apbi"]
-atlas = ExtResource("1_uk250")
-region = Rect2(320, 0, 160, 400)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3x8ti"]
-atlas = ExtResource("1_uk250")
-region = Rect2(160, 0, 160, 400)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_36yf2"]
 atlas = ExtResource("1_uk250")
 region = Rect2(320, 0, 160, 400)
 
@@ -50,14 +38,6 @@ region = Rect2(480, 400, 160, 400)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2gdm0")
-}],
-"loop": true,
-"name": &"idle_back",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_udexr")
 }, {
 "duration": 1.0,
@@ -71,22 +51,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3x8ti")
-}],
-"loop": true,
-"name": &"idle_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_36yf2")
-}],
-"loop": true,
-"name": &"idle_right",
 "speed": 5.0
 }, {
 "frames": [{

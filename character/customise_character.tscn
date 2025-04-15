@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://du23gm7m61aa3"]
+[gd_scene load_steps=18 format=3 uid="uid://du23gm7m61aa3"]
 
 [ext_resource type="Script" uid="uid://cglfofm1pgmjr" path="res://character/customise_character.gd" id="1_aa2cn"]
 [ext_resource type="PackedScene" uid="uid://ccg3ikykt1sns" path="res://player.tscn" id="1_y1y4p"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cyejpigyajtqy" path="res://character/tops_tab.png" id="5_nswma"]
 [ext_resource type="Shader" uid="uid://22h4okxoyq56" path="res://character/customise_character_hue.gdshader" id="6_fabpe"]
 [ext_resource type="Shader" uid="uid://dv71heoussjlt" path="res://character/customise_character_brightness.gdshader" id="7_6koge"]
+[ext_resource type="Texture2D" uid="uid://c11imjo2qtagl" path="res://character/bottoms_tab.png" id="8_ppaav"]
+[ext_resource type="Texture2D" uid="uid://b1qjmg16hba5m" path="res://character/shoes_tab.png" id="9_ndf5f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6koge"]
 bg_color = Color(0.662745, 0.494118, 0.796078, 1)
@@ -141,27 +143,27 @@ offset_left = -34.0
 offset_top = 19.0
 offset_right = 6.0
 offset_bottom = 59.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.36, 0.36)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_ch3sq")
 
 [node name="HairPageButton" type="TextureButton" parent="background/face_page"]
 layout_mode = 0
-offset_left = -34.0
-offset_top = 104.0
-offset_right = 70.0
-offset_bottom = 322.0
-scale = Vector2(0.4, 0.4)
+offset_left = -33.9999
+offset_top = 96.0
+offset_right = 70.0001
+offset_bottom = 314.0
+scale = Vector2(0.36, 0.36)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_geynt")
 
 [node name="TopsPageButton" type="TextureButton" parent="background/face_page"]
 layout_mode = 0
 offset_left = -34.0001
-offset_top = 191.0
+offset_top = 174.0
 offset_right = 71.9999
-offset_bottom = 409.0
-scale = Vector2(0.39, 0.39)
+offset_bottom = 392.0
+scale = Vector2(0.35, 0.35)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_nswma")
 
@@ -171,6 +173,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FacePageControl" type="Control" parent="background/face_page/PageControl"]
+visible = false
 custom_minimum_size = Vector2(370, 445)
 anchors_preset = 0
 offset_right = 40.0
@@ -210,6 +213,7 @@ offset_bottom = 16.0
 
 [node name="FaceBGColorRect" type="ColorRect" parent="background/face_page/PageControl/FacePageControl/BrightnessSlider"]
 custom_minimum_size = Vector2(120, 150)
+layout_mode = 0
 offset_left = 55.0
 offset_top = -195.0
 offset_right = 190.0
@@ -224,7 +228,9 @@ offset_bottom = 205.0
 
 [node name="SubViewport" type="SubViewport" parent="background/face_page/PageControl/FacePageControl/SubViewportContainer"]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(135, 150)
+render_target_update_mode = 0
 
 [node name="player" parent="background/face_page/PageControl/FacePageControl/SubViewportContainer/SubViewport" instance=ExtResource("1_y1y4p")]
 z_index = 90
@@ -237,8 +243,36 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="HairGrid" type="GridContainer" parent="background/face_page/PageControl/HairPageControl"]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 55.0
+offset_right = 375.0
+offset_bottom = 415.0
+columns = 3
+
 [node name="TopsPageControl" type="Control" parent="background/face_page/PageControl"]
 custom_minimum_size = Vector2(370, 445)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TopsGrid" type="GridContainer" parent="background/face_page/PageControl/TopsPageControl"]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 55.0
+offset_right = 375.0
+offset_bottom = 415.0
+columns = 3
+
+[node name="BottomsPageControl" type="Control" parent="background/face_page/PageControl"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShoesPageControl" type="Control" parent="background/face_page/PageControl"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -252,6 +286,24 @@ offset_bottom = 55.0
 theme_override_font_sizes/normal_font_size = 30
 text = "Main Features"
 horizontal_alignment = 1
+
+[node name="BottomsPageButton" type="TextureButton" parent="background/face_page"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 250.0
+offset_right = 122.0
+offset_bottom = 582.0
+scale = Vector2(0.237, 0.237)
+texture_normal = ExtResource("8_ppaav")
+
+[node name="ShoesPageButton" type="TextureButton" parent="background/face_page"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 328.0
+offset_right = 126.0
+offset_bottom = 656.0
+scale = Vector2(0.233, 0.233)
+texture_normal = ExtResource("9_ndf5f")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -275,3 +327,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="background/face_page/FacePageButton" to="." method="_on_face_page_button_pressed"]
 [connection signal="pressed" from="background/face_page/HairPageButton" to="." method="_on_hair_page_button_pressed"]
 [connection signal="pressed" from="background/face_page/TopsPageButton" to="." method="_on_tops_page_button_pressed"]
+[connection signal="pressed" from="background/face_page/BottomsPageButton" to="." method="_on_bottoms_page_button_pressed"]
+[connection signal="pressed" from="background/face_page/ShoesPageButton" to="." method="_on_shoes_page_button_pressed"]
