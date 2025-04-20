@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccg3ikykt1sns"]
+[gd_scene load_steps=7 format=3 uid="uid://ccg3ikykt1sns"]
 
 [ext_resource type="SpriteFrames" uid="uid://eon33egacxr5" path="res://sprites/player_spriteframe.tres" id="1_4flbx"]
 [ext_resource type="SpriteFrames" uid="uid://ds5jdru7oicej" path="res://character/female/hair/female_hair.tres" id="2_i3pqv"]
 [ext_resource type="SpriteFrames" uid="uid://d1k6gnkw3ioyg" path="res://character/female/tops/female_tops.tres" id="3_i3pqv"]
+[ext_resource type="SpriteFrames" uid="uid://88i4fb52pirg" path="res://character/female/bottoms/female_bottoms.tres" id="4_hqtel"]
+[ext_resource type="SpriteFrames" uid="uid://5sjqjmstaxf2" path="res://character/female/bangs/female_bangs.tres" id="5_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
 
@@ -18,7 +20,7 @@ shape = SubResource("RectangleShape2D_sh265")
 [node name="Body" type="AnimatedSprite2D" parent="CharacterBody2D"]
 z_index = 70
 sprite_frames = ExtResource("1_4flbx")
-animation = &"idle_default"
+animation = &"body_2"
 
 [node name="Hair" type="AnimatedSprite2D" parent="CharacterBody2D"]
 z_index = 50
@@ -28,4 +30,14 @@ animation = &"long_hair_1"
 [node name="Tops" type="AnimatedSprite2D" parent="CharacterBody2D"]
 z_index = 85
 sprite_frames = ExtResource("3_i3pqv")
-animation = &"off_black_top1"
+animation = &"a_default"
+
+[node name="Bottoms" type="AnimatedSprite2D" parent="CharacterBody2D"]
+z_index = 88
+sprite_frames = ExtResource("4_hqtel")
+
+[node name="Bangs" type="AnimatedSprite2D" parent="CharacterBody2D"]
+z_index = 90
+position = Vector2(2, -98.5)
+sprite_frames = ExtResource("5_sweqy")
+animation = &"a_default"

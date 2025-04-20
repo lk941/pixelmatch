@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH = "user://character_season_data.json"
+const SAVE_PATH = "res://data/character_season_data.json"
 var character_data = {}
 
 func _ready():

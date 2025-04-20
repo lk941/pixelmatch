@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://du23gm7m61aa3"]
+[gd_scene load_steps=20 format=3 uid="uid://du23gm7m61aa3"]
 
 [ext_resource type="Script" uid="uid://cglfofm1pgmjr" path="res://character/customise_character.gd" id="1_aa2cn"]
 [ext_resource type="PackedScene" uid="uid://ccg3ikykt1sns" path="res://player.tscn" id="1_y1y4p"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cyejpigyajtqy" path="res://character/tops_tab.png" id="5_nswma"]
 [ext_resource type="Shader" uid="uid://22h4okxoyq56" path="res://character/customise_character_hue.gdshader" id="6_fabpe"]
 [ext_resource type="Shader" uid="uid://dv71heoussjlt" path="res://character/customise_character_brightness.gdshader" id="7_6koge"]
+[ext_resource type="Texture2D" uid="uid://bfu53yrlsboge" path="res://sprites/buttons/left_button.png" id="8_3fuym"]
 [ext_resource type="Texture2D" uid="uid://c11imjo2qtagl" path="res://character/bottoms_tab.png" id="8_ppaav"]
+[ext_resource type="Texture2D" uid="uid://d2d8orgaaulv" path="res://sprites/buttons/right_button.png" id="9_jr2dj"]
 [ext_resource type="Texture2D" uid="uid://b1qjmg16hba5m" path="res://character/shoes_tab.png" id="9_ndf5f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6koge"]
@@ -173,7 +175,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FacePageControl" type="Control" parent="background/face_page/PageControl"]
-visible = false
 custom_minimum_size = Vector2(370, 445)
 anchors_preset = 0
 offset_right = 40.0
@@ -230,12 +231,50 @@ offset_bottom = 205.0
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(135, 150)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="player" parent="background/face_page/PageControl/FacePageControl/SubViewportContainer/SubViewport" instance=ExtResource("1_y1y4p")]
 z_index = 90
 position = Vector2(-24, 40)
 scale = Vector2(0.45, 0.45)
+
+[node name="LeftBangsButton" type="TextureButton" parent="background/face_page/PageControl/FacePageControl"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 100.0
+offset_right = 240.0
+offset_bottom = 400.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("8_3fuym")
+
+[node name="RightBangsButton" type="TextureButton" parent="background/face_page/PageControl/FacePageControl"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 100.0
+offset_right = 450.0
+offset_bottom = 400.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("9_jr2dj")
+
+[node name="SkinToneLabel" type="RichTextLabel" parent="background/face_page/PageControl/FacePageControl"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 295.0
+offset_right = 230.0
+offset_bottom = 315.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Skin Tone"
+horizontal_alignment = 1
+
+[node name="SkinToneGridContainer" type="GridContainer" parent="background/face_page/PageControl/FacePageControl"]
+z_index = 50
+layout_mode = 0
+offset_left = 85.0
+offset_top = 320.0
+offset_right = 275.0
+offset_bottom = 350.0
+columns = 7
 
 [node name="HairPageControl" type="Control" parent="background/face_page/PageControl"]
 custom_minimum_size = Vector2(370, 445)
@@ -272,6 +311,15 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="BottomsGrid" type="GridContainer" parent="background/face_page/PageControl/BottomsPageControl"]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 55.0
+offset_right = 375.0
+offset_bottom = 415.0
+columns = 3
+
 [node name="ShoesPageControl" type="Control" parent="background/face_page/PageControl"]
 anchors_preset = 0
 offset_right = 40.0
@@ -305,6 +353,39 @@ offset_bottom = 656.0
 scale = Vector2(0.233, 0.233)
 texture_normal = ExtResource("9_ndf5f")
 
+[node name="button_backing2" type="ColorRect" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.036
+anchor_right = 0.109
+anchor_bottom = 0.114
+offset_left = 969.832
+offset_top = 265.672
+offset_right = 956.432
+offset_bottom = 317.128
+mouse_filter = 2
+color = Color(1, 0.847059, 0.85098, 1)
+
+[node name="FinishCharacterButton" type="Button" parent="background"]
+z_index = 50
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.853
+anchor_right = 0.13
+anchor_bottom = 0.931
+offset_left = 959.248
+offset_top = -271.744
+offset_right = 938.24
+offset_bottom = -220.288
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_6koge")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aa2cn")
+text = ">"
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
@@ -327,5 +408,8 @@ horizontal_alignment = 1
 [connection signal="pressed" from="background/face_page/FacePageButton" to="." method="_on_face_page_button_pressed"]
 [connection signal="pressed" from="background/face_page/HairPageButton" to="." method="_on_hair_page_button_pressed"]
 [connection signal="pressed" from="background/face_page/TopsPageButton" to="." method="_on_tops_page_button_pressed"]
+[connection signal="pressed" from="background/face_page/PageControl/FacePageControl/LeftBangsButton" to="." method="_on_left_bangs_button_pressed"]
+[connection signal="pressed" from="background/face_page/PageControl/FacePageControl/RightBangsButton" to="." method="_on_right_bangs_button_pressed"]
 [connection signal="pressed" from="background/face_page/BottomsPageButton" to="." method="_on_bottoms_page_button_pressed"]
 [connection signal="pressed" from="background/face_page/ShoesPageButton" to="." method="_on_shoes_page_button_pressed"]
+[connection signal="pressed" from="background/FinishCharacterButton" to="." method="_on_finish_character_button_pressed"]
