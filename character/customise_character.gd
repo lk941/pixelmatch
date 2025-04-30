@@ -45,7 +45,13 @@ var skin_tones = [
 	Color("#f2d5bf"), Color("#edcaaf") #, Color("#e8bd9c"), Color("#dead87")
 ]
 
+var blush_tones = [
+	Color("#fdc9c9"), Color("#f6a2a8"), Color("#e27285"),
+	Color("#b25266"), Color("#64364b")
+]
+
 var selected_skin_tone_button : Button = null
+var selected_blush_tone_button : Button = null
 
 func _ready():
 	sprite = $background/player/CharacterBody2D/Body
@@ -99,6 +105,42 @@ func _ready():
 		
 		# Add to grid
 		skin_tone_grid.add_child(btn)
+		
+	for i in blush_tones.size():
+		var tone = blush_tones[i]
+		var btn = Button.new()
+		btn.custom_minimum_size = Vector2(25, 25)
+		# btn.flat = true
+		btn.focus_mode = Control.FOCUS_NONE
+
+		# Create a circular colored style
+		var stylebox := StyleBoxFlat.new()
+		stylebox.bg_color = tone
+		stylebox.draw_center = true
+		stylebox.set_corner_radius_all(100)
+		stylebox.set_border_width_all(0)
+		btn.add_theme_stylebox_override("normal", stylebox)
+		
+		var hover_stylebox := stylebox.duplicate() as StyleBoxFlat
+		hover_stylebox.set_border_width_all(4)
+		hover_stylebox.border_color = Color(1, 1, 1)  # white
+		btn.add_theme_stylebox_override("hover", hover_stylebox)
+		
+		var pressed_stylebox := stylebox.duplicate() as StyleBoxFlat
+		pressed_stylebox.set_border_width_all(4)
+		pressed_stylebox.border_color = Color(1, 1, 1)  # or any color you like
+		btn.add_theme_stylebox_override("pressed", pressed_stylebox)
+
+
+		# Set button signal
+		btn.pressed.connect(_on_blush_tone_pressed.bind(btn, stylebox, i))
+		
+		var blush_tone_grid := $background/face_page/PageControl/FacePageControl/BlushToneGridContainer
+		blush_tone_grid.set("theme_override_constants/h_separation", 15)
+		blush_tone_grid.set("theme_override_constants/v_separation", 10)
+		
+		# Add to grid
+		blush_tone_grid.add_child(btn)
 	
 func _show_page(page: Control):
 	for p in all_pages:
@@ -124,6 +166,23 @@ func _on_skin_tone_pressed(button: Button, stylebox: StyleBoxFlat, i: int):
 	sprite.animation = body_list[i]
 
 	selected_skin_tone_button = button
+	
+func _on_blush_tone_pressed(button: Button, stylebox: StyleBoxFlat, i: int):
+	# Remove ring from previously selected button
+	if selected_blush_tone_button:
+		pass
+		#var old_style: StyleBoxFlat = selected_skin_tone_button.get_theme_stylebox("normal")
+		#old_style.set_border_width_all(0)
+		#selected_skin_tone_button.add_theme_stylebox_override("normal", old_style)
+#
+	## Add purple ring to current button
+	#stylebox.set_border_width_all(4)
+	#stylebox.border_color = Color(0.6, 0.3, 1.0)  # purple
+	#button.add_theme_stylebox_override("normal", stylebox)
+	#
+	#sprite.animation = body_list[i]
+#
+	#selected_skin_tone_button = button
 
 func _on_face_page_button_pressed():
 	$background/face_page.color = Color("#f0b9df")

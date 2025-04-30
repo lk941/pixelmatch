@@ -276,6 +276,26 @@ offset_right = 275.0
 offset_bottom = 350.0
 columns = 7
 
+[node name="BlushToneGridContainer" type="GridContainer" parent="background/face_page/PageControl/FacePageControl"]
+z_index = 50
+layout_mode = 0
+offset_left = 82.0
+offset_top = 375.0
+offset_right = 272.0
+offset_bottom = 405.0
+columns = 7
+
+[node name="BlushToneLabel" type="RichTextLabel" parent="background/face_page/PageControl/FacePageControl"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 350.0
+offset_right = 225.0
+offset_bottom = 370.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Blush"
+horizontal_alignment = 1
+
 [node name="HairPageControl" type="Control" parent="background/face_page/PageControl"]
 custom_minimum_size = Vector2(370, 445)
 anchors_preset = 0

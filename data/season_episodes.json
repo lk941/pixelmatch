@@ -1,0 +1,15 @@
+{"1": 
+	{
+	"1":
+		{"title":"1. Blind Box Introduction",
+		"description":"To begin the program, contestants are asked to pick a bouquet of their choice. They get to meet one person first, but slowly the rest are revealed.",
+		"image":"res://seasons/season_1/thumbnails/default.png",
+		"watched": "no"}
+	,
+	"2":
+		{"title":"2. First mini-game",
+		"description":"On the second day, right after breakfast, the players are invited to their first mini-game.",
+		"image":"res://seasons/season_1/thumbnails/default.png",
+		"watched": "no"}
+	}
+}

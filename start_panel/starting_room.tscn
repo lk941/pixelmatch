@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo3blfyk6stpv"]
+[gd_scene load_steps=12 format=3 uid="uid://bo3blfyk6stpv"]
 
 [ext_resource type="Script" uid="uid://bvxaw078mcwpa" path="res://start_panel/starting_room.gd" id="1_gmlfh"]
 [ext_resource type="PackedScene" uid="uid://ccg3ikykt1sns" path="res://player.tscn" id="1_tryam"]
+[ext_resource type="Texture2D" uid="uid://58hu4v62oyj4" path="res://seasons/season_1/player_room_menu.png" id="3_goi3f"]
+[ext_resource type="Texture2D" uid="uid://cidgxxoswutid" path="res://seasons/season_1/thumbnails/default.png" id="4_xuiuq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmlfh"]
 bg_color = Color(0.662745, 0.494118, 0.796078, 1)
@@ -11,6 +13,24 @@ bg_color = Color(0.733318, 0.572726, 0.827518, 1)
 border_color = Color(0.8, 0.682353, 0.8, 1)
 corner_detail = 20
 anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuiuq"]
+bg_color = Color(0.874664, 0.68001, 0.720085, 1)
+
+[sub_resource type="Theme" id="Theme_goi3f"]
+Button/font_sizes/font_size = 80
+Button/fonts/font = null
+Button/styles/normal = SubResource("StyleBoxFlat_xuiuq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ny8y"]
+bg_color = Color(0.668802, 0.579065, 0.538273, 1)
+
+[sub_resource type="Theme" id="Theme_1ny8y"]
+VBoxContainer/constants/separation = 4
+VBoxContainer/styles/background_color = SubResource("StyleBoxFlat_1ny8y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jty8h"]
+bg_color = Color(0.888494, 0.559495, 0.627355, 1)
 
 [node name="StartingRoom" type="Control"]
 custom_minimum_size = Vector2(960, 540)
@@ -22,25 +42,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gmlfh")
 
-[node name="room_background" type="ColorRect" parent="."]
+[node name="room_background_rect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
 layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 643.0
 color = Color(0.741176, 0.643137, 0.6, 1)
 
+[node name="room_background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.00012
+offset_top = -1.0
+offset_right = 3646.0
+offset_bottom = 2051.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("3_goi3f")
+
 [node name="floor" type="ColorRect" parent="room_background"]
 custom_minimum_size = Vector2(960, 100)
 layout_mode = 0
-offset_top = 540.0
-offset_right = 1149.0
-offset_bottom = 640.0
+offset_left = 8.33384
+offset_top = 2254.17
+offset_right = 1157.33
+offset_bottom = 2354.17
 color = Color(0.866667, 0.807843, 0.74902, 1)
 
 [node name="player" parent="room_background" instance=ExtResource("1_tryam")]
 clip_children = 1
-position = Vector2(160, 193)
-scale = Vector2(0.55, 0.55)
+position = Vector2(304.167, 983.333)
+scale = Vector2(2.4, 2.4)
 
 [node name="BacktoSeasonsButton" type="Button" parent="room_background"]
 z_index = 50
@@ -51,17 +87,16 @@ anchor_left = 0.051
 anchor_top = 0.853
 anchor_right = 0.13
 anchor_bottom = 0.931
-offset_left = -27.65
-offset_top = -526.891
-offset_right = -33.49
-offset_bottom = -534.011
+offset_left = -107.299
+offset_top = -2208.98
+offset_right = -113.139
+offset_bottom = -2216.1
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 120
 theme_override_styles/hover = SubResource("StyleBoxFlat_gmlfh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_goi3f")
-text = "Back
-"
+text = "Back"
 
 [node name="button_backing" type="ColorRect" parent="room_background"]
 layout_mode = 1
@@ -70,19 +105,75 @@ anchor_left = 0.034
 anchor_top = 0.036
 anchor_right = 0.109
 anchor_bottom = 0.114
-offset_left = -0.100002
-offset_top = 6.852
-offset_right = -3.35
-offset_bottom = -2.302
+offset_left = 7.79999
+offset_top = 31.8
+offset_right = 14.8
+offset_bottom = 22.2
 mouse_filter = 2
 color = Color(1, 0.847059, 0.85098, 1)
 
-[node name="ColorRect" type="ColorRect" parent="room_background"]
+[node name="screen" type="ColorRect" parent="room_background"]
 custom_minimum_size = Vector2(500, 470)
 layout_mode = 0
-offset_left = 515.0
-offset_top = 107.0
-offset_right = 1015.0
-offset_bottom = 577.0
+offset_left = 1510.0
+offset_top = 340.0
+offset_right = 4510.0
+offset_bottom = 2440.0
+color = Color(0.986063, 0.923605, 0.855828, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="room_background/screen"]
+custom_minimum_size = Vector2(3000, 2100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="room_background/screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EpisodeListContainer" type="VBoxContainer" parent="room_background/screen/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_goi3f")
+
+[node name="PanelContainer" type="PanelContainer" parent="room_background/screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.4
+
+[node name="FeatureEpisodeContainer" type="VBoxContainer" parent="room_background/screen/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1ny8y")
+
+[node name="EpisodeImage" type="TextureRect" parent="room_background/screen/HBoxContainer/PanelContainer/FeatureEpisodeContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 900)
+layout_mode = 2
+texture = ExtResource("4_xuiuq")
+stretch_mode = 3
+
+[node name="EpisodeTitle" type="RichTextLabel" parent="room_background/screen/HBoxContainer/PanelContainer/FeatureEpisodeContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 120
+text = "Welcome to Season 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EpisodeDesc" type="RichTextLabel" parent="room_background/screen/HBoxContainer/PanelContainer/FeatureEpisodeContainer"]
+custom_minimum_size = Vector2(1800, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 100
+text = "Click each episode to continue progress! "
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="room_background/screen/HBoxContainer/PanelContainer/FeatureEpisodeContainer"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 110
+theme_override_styles/normal = SubResource("StyleBoxFlat_jty8h")
+text = ">> Start"
 
 [connection signal="pressed" from="room_background/BacktoSeasonsButton" to="." method="_on_backto_seasons_button_pressed"]

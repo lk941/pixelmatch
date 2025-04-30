@@ -11,7 +11,7 @@ uniform float ring_thickness = 0.08;
 void fragment() {
 	vec2 uv = (UV - vec2(0.5)) * 2.0;
 	float dist = length(uv);
-	
+
 	if (dist > 1.0) {
 		discard;
 	}
